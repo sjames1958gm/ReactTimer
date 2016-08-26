@@ -37,6 +37,7 @@ describe("CountdownForm", () => {
     it('should not get called', () => {
       expect(spy).toNotHaveBeenCalled();
     });
+    
     countdownForm.refs.seconds.value = '123A';
     TestUtils.Simulate.submit($el.find('form')[0]);
 
