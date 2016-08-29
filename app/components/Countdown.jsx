@@ -36,10 +36,18 @@ var Countdown = React.createClass({
     }
   },
 
+  componentWillUnmount: function() {
+     this.stopTimer();
+  },
+
   startTimer: function() {
     this.timer = setInterval(() => {
       var count = this.state.count - 1;
-      this.setState({count: (count >= 0 ? count: 0)});
+      count = (count > 0 ? count: 0);
+      var countdownStatus = this.state.countdownStatus;
+      if (count == 0) countdownStatus = "stopped";
+
+      this.setState({count, countdownStatus});
     }, 1000);
   },
 
